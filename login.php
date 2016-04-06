@@ -1,4 +1,5 @@
 ﻿<?php
+session_start();
 error_reporting(0);
 $mysql_servername = "localhost"; //主机地址
 $mysql_username = "root"; //数据库用户名
@@ -6,19 +7,21 @@ $mysql_password ="root"; //数据库密码
 $mysql_database ="project"; //数据库
 mysql_connect($mysql_servername , $mysql_username , $mysql_password);
 mysql_select_db($mysql_database); 
-$name=$_POST['name'];
+$id=$_POST['id'];
 $passowrd=$_POST['password'];
-if ($name && $passowrd){
- $sql = "SELECT * FROM personInfo WHERE name = '$name' and password='$passowrd'";
+if ($id && $passowrd){
+ $sql = "SELECT * FROM personinfo WHERE id = '$id' and password='$passowrd'";
  $res = mysql_query($sql);
  $rows = mysql_num_rows($res);
  $a = mysql_fetch_array($res);
- $isteacher = $a["isTeacher"];
+ $isteacher = $a["isteacher"];
+ $name = $a['name'];
  if($rows){
+ 	$_SESSION['username'] = $name;
  	if( $isteacher != 0 )
- 		header("refresh:0;url=tch_success.html");
+ 		header("refresh:0;url=tch_success.php");
  	else
-   		header("refresh:0;url=stu_success.html");//跳转页面，注意路径
+   		header("refresh:0;url=stu_success.php");//跳转页面，注意路径
    	exit;
  }
  echo "<script language=javascript>alert('用户名密码错误');history.back();</script>";
