@@ -6,6 +6,7 @@ $mysql_username = "root"; //数据库用户名
 $mysql_password ="root"; //数据库密码
 $mysql_database ="project"; //数据库
 mysql_connect($mysql_servername , $mysql_username , $mysql_password);
+mysql_query('set names utf8');
 mysql_select_db($mysql_database); 
 $id=$_POST['id'];
 $passowrd=$_POST['password'];
@@ -18,6 +19,7 @@ if ($id && $passowrd){
  $name = $a['name'];
  if($rows){
  	$_SESSION['username'] = $name;
+ 	$_SESSION['id'] = $id;
  	if( $isteacher != 0 )
  		header("refresh:0;url=tch_success.php");
  	else
