@@ -16,6 +16,9 @@ body{
 
 <body>
 <?php
+	if( !isset($_SESSION['username']) ){
+		echo "<script language=javascript>alert('请先登录！');window.location.href='index.html';</script>";
+	}
 	$_SESSION['weeks']=$_POST['weeks'];
 	echo "当前要发布的是第".$_POST['weeks']."周的作业。";
 ?>
