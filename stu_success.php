@@ -19,6 +19,9 @@ form{
 
 <body>
 <?php
+	if( !isset($_SESSION['username']) ){
+		echo "<script language=javascript>alert('请先登录！');window.location.href='index.html';</script>";
+	}
 	echo "欢迎你：".$_SESSION['username'];
 ?>
 <form id="opform" name="stuform" action="" method="post">
