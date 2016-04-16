@@ -9,16 +9,9 @@ mysql_connect($mysql_servername , $mysql_username , $mysql_password);
 mysql_query('set names utf8');
 mysql_select_db($mysql_database); 
 $id=$_POST['id'];
-<<<<<<< HEAD
 $passowrd=$_POST['password'];
-if ($id && $passowrd){
- $sql = "SELECT * FROM personinfo WHERE id = '$id' and password='$passowrd'";
-=======
-$id="stu";
-$password=$_POST['password'];
 if ($id && $password){
  $sql = "SELECT * FROM personinfo WHERE id = '$id' and password='$password'";
->>>>>>> f39cc79cebfeb79559b3d997a444e9fe28a78cb5
  $res = mysql_query($sql);
  $rows = mysql_num_rows($res);
  $a = mysql_fetch_array($res);
