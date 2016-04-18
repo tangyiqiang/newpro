@@ -30,17 +30,17 @@ body{
 <script>
 function addStu(){
 	var form=document.getElementById("tchOpform");
-	form.action="tchAddStu.php";
+	form.action="addStu.php";
 	form.submit();
 }
 function delStu(){
 	var form=document.getElementById("tchOpform");
-	form.action="tchDelStu.php";
+	form.action="delStu.php";
 	form.submit();
 }
 function addTch(){
 	var form=document.getElementById("tchOpform");
-	form.action="tchAddTch.php";
+	form.action="addTch.php";
 	form.submit();
 }
 function stuMng(){
