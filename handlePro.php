@@ -13,10 +13,10 @@ $content=$_POST['content'];
 $curTime=date("Y-m-d");
 date_default_timezone_set("PRC");
 if ($title && $content){
-	if( $_SESSION['weeks'] == "one" ){
-		$sql = "INSERT INTO problem values(1,$title,$content,$curTime)";
+	if( $_SESSION['weeks'] == 'one' ){
+		$sql = "INSERT INTO problem values(1,'$title','$content','$curTime')";
 		$res = mysql_query($sql);
-		if(mysql_affected_rows())
+		if($res)
 			header("refresh:0;url=problem.php");
 		else
 			header("refresh:0;url=pubPro.php");

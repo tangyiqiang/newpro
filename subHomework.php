@@ -14,7 +14,7 @@ $id=$_SESSION['id'];
 date_default_timezone_set("PRC");
 if ($homework){
 	if( $_SESSION['weeks'] == "one" ){
-		$sql = "INSERT INTO homework values($id,1,$homework,$curTime)";
+		$sql = "INSERT INTO homework values('$id','$homework','$curTime',1)";
 		$res = mysql_query($sql);
 		if($res)
 			echo "<script language=javascript>alert('作业提交成功！');window.location.href='index.html';</script>";
