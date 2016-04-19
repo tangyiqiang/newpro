@@ -23,8 +23,6 @@ body{
 <form id="tchOpform" name="tchForm" action="" method="post">
 <div><input type="button" value="添加学生" onclick="addStu()" /></div>
 <div><input type="button" value="删除学生" onclick="delStu()" /></div>
-<div><input type="button" value="添加教师" onclick="addTch()" /></div>
-<div><input type="button" value="学生管理" onclick="stuMng()" /></div>
 </form>
 
 <script>
@@ -36,16 +34,6 @@ function addStu(){
 function delStu(){
 	var form=document.getElementById("tchOpform");
 	form.action="tchDelStu.php";
-	form.submit();
-}
-function addTch(){
-	var form=document.getElementById("tchOpform");
-	form.action="tchAddTch.php";
-	form.submit();
-}
-function stuMng(){
-	var form=document.getElementById("tchOpform");
-	form.action="tchMng.php";
 	form.submit();
 }
 </script>

@@ -1,53 +1,24 @@
-﻿<!doctype html>
-<?php
-	session_start();
-?>
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>学生管理</title>
-</head>
-
-<style>
-body{
-	text-align:center;
-}
-</style>
-<body>
-<?php
-	if( !isset($_SESSION['username']) ){
-		echo "<script language=javascript>alert('请先登录！');window.location.href='index.html';</script>";
+﻿<?php
+session_start();
+error_reporting(0);
+$mysql_servername = "localhost"; //主机地址
+$mysql_username = "root"; //数据库用户名
+$mysql_password ="root"; //数据库密码
+$mysql_database ="project"; //数据库
+mysql_connect($mysql_servername , $mysql_username , $mysql_password);
+mysql_query('set names utf8');
+mysql_select_db($mysql_database);
+$id=$_POST['de'];
+foreach($id as $ide){
+	$exec="delete from personinfo where id='$ide'";
+	$result=mysql_query($exec);
+	if((mysql_affected_rows()==0) or (mysql_affected_rows==-1)){
+	    echo "没有找到记录，或者删除时出错";
+	    exit;
 	}
-	echo "欢迎你：".$_SESSION['username'];
+	else{
+	    echo "学生信息已经删除";
+	}
+}
+    mysql_close();
 ?>
-<form id="tchOpform" name="tchForm" action="" method="post">
-<div><input type="button" value="添加学生" onclick="addStu()" /></div>
-<div><input type="button" value="删除学生" onclick="delStu()" /></div>
-<div><input type="button" value="添加教师" onclick="addTch()" /></div>
-<div><input type="button" value="学生管理" onclick="stuMng()" /></div>
-</form>
-
-<script>
-function addStu(){
-	var form=document.getElementById("tchOpform");
-	form.action="addStu.php";
-	form.submit();
-}
-function delStu(){
-	var form=document.getElementById("tchOpform");
-	form.action="delStu.php";
-	form.submit();
-}
-function addTch(){
-	var form=document.getElementById("tchOpform");
-	form.action="addTch.php";
-	form.submit();
-}
-function stuMng(){
-	var form=document.getElementById("tchOpform");
-	form.action="tchMng.php";
-	form.submit();
-}
-</script>
-</body>
-</html>

@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <?php
 	session_start();
 ?>
@@ -21,12 +21,41 @@ body{
 	echo "欢迎你：".$_SESSION['username'];
 ?>
 
+<form id="adds" action="" method="post">
+<div><p>学号:<input type=text name="id"></p></div>
+<div><p>姓名:<input type=text name="name"></p></div>
+<div><input type="button" value="添加" onclick="Add()" /></div>
+</form>
+
 <script>
-function addStu(){
-	var form=document.getElementById("tchOpform");
-	form.action="addStu.php";
-	form.submit();
+function Add(){
+	var id=document.getElementById('id');
+	var name=document.getElementById('name');
+	if( !ok(id,name) ){
+		alert("用户名或者ID不合法！");
+		document.getElementById('id').value="";
+		document.getElementById('name').value="";
+	}
+	else{
+		var form=document.getElementById("adds");
+		form.action="addStu.php";
+		form.submit();
+		document.getElementById('id').value="";
+		document.getElementById('name').value="";
+	}
 }
+
+function ok(id,name){
+	for(var i = 0; i < id.length; i++){
+		if( !isNaN(id[i]) )
+			return false;
+	}
+	for(var j = 0; j < name.length; j++){
+
+	}
+	return true;
+}
+
 </script>
 </body>
 </html>

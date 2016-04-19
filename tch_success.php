@@ -23,14 +23,27 @@ body{
 <form id="tchOpform" name="tchForm" action="" method="post">
 请选择第几周：
 <select name="weeks">
-	<option value ="one">1</option>
-	<option value ="two">2</option>
-	<option value="three">3</option>
-	<option value="four">4</option>
+	<option value ="1">1</option>
+	<option value ="2">2</option>
+	<option value="3">3</option>
+	<option value="4">4</option>
+	<option value="5">5</option>
+	<option value="6">6</option>
+	<option value="7">7</option>
+	<option value="8">8</option>
+	<option value="9">9</option>
+	<option value="10">10</option>
+	<option value="11">11</option>
+	<option value="12">12</option>
+	<option value="13">13</option>
+	<option value="14">14</option>
+	<option value="15">15</option>
+	<option value="16">16</option>
 </select>
 <div><input type="button" value="发布作业" onclick="pubPro()" /></div>
-<div><input type="button" value="查看作业" onclick="broPro()" /></div>
-<div><input type="button" value="批改作业" onclick="corPro()" /></div>
+<div><input type="button" value="查看题目" onclick="broPro()" /></div>
+<div><input type="button" value="查看作业" onclick="corPro()" /></div>
+<div><input type="button" value="作业查重" onclick="chkJob()" /></div>
 <div><input type="button" value="学生管理" onclick="stuMng()" /></div>
 </form>
 
@@ -48,6 +61,11 @@ function broPro(){
 function corPro(){
 	var form=document.getElementById("tchOpform");
 	form.action="tchCorPro.php";
+	form.submit();
+}
+function chkJob(){
+	var form=document.getElementById("tchOpform");
+	form.action="tchChkJob.php";
 	form.submit();
 }
 function stuMng(){
