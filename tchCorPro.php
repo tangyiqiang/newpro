@@ -46,6 +46,10 @@ body{
 	<option value="<?php echo $rs["id"];?>"><?php echo $rs["name"];?></option>; 
 <?php
 	}
+	$week = $_POST['weeks'];
+	$codesql="select * from homework where week='$week'";
+	$result = mysql_query($codesql);
+	
 	mysql_close(); 
 ?>
 </select>
