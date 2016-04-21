@@ -40,7 +40,9 @@ body{
 			$name=$rs->name; 
 	?> 
 		<tr>
-			<td> <input type=checkbox name=de[] value=<?php echo $id?> /></td> <td><?php echo $id?></td><td><?php echo $name?> </td>
+			<td><input type=checkbox name=de[] value=<?php echo $id?> /></td> 学号：<?php echo $id?>
+			&nbsp&nbsp&nbsp姓名：<td><?php echo $name?> </td>
+			<br />
 		</tr>
 	<?php
 		}

@@ -10,9 +10,6 @@
 </head>
 
 <body>
-<?php
-	echo "当前查看的是第".$_SESSION['weeks']."周的作业。";
-?>
 
 <style>
 body{
@@ -25,7 +22,10 @@ body{
 	if( !isset($_SESSION['username']) ){
 		echo "<script language=javascript>alert('请先登录！');window.location.href='index.html';</script>";
 	}
+	$_SESSION['weeks'] = $_POST['weeks'];
 	echo "当前查看的是第".$_SESSION['weeks']."周的作业。";
+	$week=$_SESSION['weeks'];
+	$id=$_SESSION['id'];
 	error_reporting(0);
 	$mysql_servername = "localhost"; //主机地址
 	$mysql_username = "root"; //数据库用户名
@@ -34,7 +34,9 @@ body{
 	mysql_connect($mysql_servername , $mysql_username , $mysql_password);
 	mysql_query('set names utf8');
 	mysql_select_db($mysql_database);
-	$row = mysql_fetch_assoc( mysql_query("select * from problem where week=1") ); 
+	$sql = "SELECT * FROM problem where week='$week'";
+	$res = mysql_query($sql);
+	$row = mysql_fetch_assoc($res); 
 ?>
 	<div>题目：<input type=text value=<?php echo $row['title']?> /></div>
 	<div>内容：<input type=textarea value=<?php echo $row['content']?> /></div>

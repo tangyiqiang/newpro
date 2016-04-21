@@ -8,18 +8,14 @@ $mysql_database ="project"; //数据库
 mysql_connect($mysql_servername , $mysql_username , $mysql_password);
 mysql_query('set names utf8');
 mysql_select_db($mysql_database); 
-$id=$_POST['id'];
-$name=$_POST['name'];
-$password=$id;
+$id=$_GET['id'];
+$week=$_SESSION['weeks'];
 date_default_timezone_set("PRC");
-$sql = "INSERT INTO personinfo values('$id','$name',0,'$password')";
+$sql = "SELECT * FROM homework WHERE id='$id' AND week='$week'";
 $res = mysql_query($sql);
-mysql_close(); 
-if($res){
-	echo "<script language=javascript>alert('添加成功！');</script>";
-}
-else{
-	echo "<script language=javascript>alert('添加失败！');/script>";		
-}
-header("refresh:0;url=tchAddStu.php");
+$row = mysql_fetch_assoc($res);
+if( $row )
+	echo $row['code'];
+else
+	echo "你没交作业！Fuck Off!";
 ?>

@@ -14,11 +14,13 @@ foreach($id as $ide){
 	$result=mysql_query($exec);
 	if((mysql_affected_rows()==0) or (mysql_affected_rows==-1)){
 	    echo "没有找到记录，或者删除时出错";
+	    header("refresh:0;url=tchDelStu.php");
 	    exit;
 	}
 	else{
 	    echo "学生信息已经删除";
+	    header("refresh:0;url=tchDelStu.php");
 	}
 }
-    mysql_close();
+mysql_close();
 ?>

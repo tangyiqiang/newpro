@@ -28,12 +28,12 @@ body{
 		echo "<script language=javascript>alert('请先登录！');window.location.href='index.html';</script>";
 	}
 	$_SESSION['weeks']=$_POST['weeks'];
-	echo "当前要提交的是第".$_POST['weeks']."周的作业。";
+	echo "当前要提交的是第".$_SESSION['weeks']."周的作业。";
 	echo "提交的人是".$_SESSION['username'];
 ?>
 <center><p>当前正在查看作业</p></center>
 <div>
-<form action="subHomework.php" method="post">
+<form action="stuSubHomework.php" method="post">
 <textarea id="middle" name="homework"></textarea>
 <input type="submit" value="提交" />
 </form>

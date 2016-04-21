@@ -4,6 +4,7 @@
 ?>
 <html>
 <head>
+<script type="text/javascript" src="js/jquery.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>查看作业</title>
 </head>
@@ -23,7 +24,8 @@ body{
 </style>
 
 <body>
-<select name="stuName" onchange="find()">
+<select id="stuName">
+<option value=""></option>
 <?php
 	if( !isset($_SESSION['username']) ){
 		echo "<script language=javascript>alert('请先登录！');window.location.href='index.html';</script>";
@@ -43,12 +45,9 @@ body{
 		$id=$rs->id;
 		$name=$rs->name;
 ?> 
-	<option value="<?php echo $rs["id"];?>"><?php echo $rs["name"];?></option>; 
+	<option value="<?php echo $rs->id;?>"><?php echo $rs->id;?></option>; 
 <?php
 	}
-	$week = $_POST['weeks'];
-	$codesql="select * from homework where week='$week'";
-	$result = mysql_query($codesql);
 	
 	mysql_close(); 
 ?>
@@ -56,9 +55,23 @@ body{
 <textarea id="middle" name="homework"></textarea>
 
 <script>
-function find(){
-
+document.getElementById("stuName").onchange = function(){
+	alert("areyoukiddingme?");
+	var request = new XMLHttpRequest();
+	request.open("GET","stuHomework.php?id="+document.getElementById("stuName").value);
+	request.send();
+	request.onreadystatechange=function(){
+		if(request.readyState==4){
+			if( request.status==200){
+				document.getElementById("middle").innerHTML = request.responseText;
+			}
+			else{
+				alert("发生错误了！");
+			}
+		}
+	}
 }
+
 </script>
 
 </body>

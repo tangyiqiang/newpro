@@ -22,15 +22,26 @@ body{
 ?>
 
 <form id="adds" action="" method="post">
-<div><p>学号:<input type=text name="id"></p></div>
-<div><p>姓名:<input type=text name="name"></p></div>
-<div><input type="button" value="添加" onclick="Add()" /></div>
+<div><p>学号:<input type=text name="id" id='id'></p></div>
+<div><p>姓名:<input type=text name="name" id='name'></p></div>
+<input type="button" value="添加" onclick="Add()" />
 </form>
-
+<input type="button" value="返回上一页" onclick="Return()" />
 <script>
+function Return(){
+	header("refresh:0;url=tchMng.php");
+}
+function ok(id,name){
+	var n = Number(id);
+	if( !isNaN(n) ){
+		if( n > 0) return true;
+		else return false;
+	}
+	return false;
+}
 function Add(){
-	var id=document.getElementById('id');
-	var name=document.getElementById('name');
+	var id=document.getElementById('id').value;
+	var name=document.getElementById('name').value;
 	if( !ok(id,name) ){
 		alert("用户名或者ID不合法！");
 		document.getElementById('id').value="";
@@ -43,17 +54,6 @@ function Add(){
 		document.getElementById('id').value="";
 		document.getElementById('name').value="";
 	}
-}
-
-function ok(id,name){
-	for(var i = 0; i < id.length; i++){
-		if( !isNaN(id[i]) )
-			return false;
-	}
-	for(var j = 0; j < name.length; j++){
-
-	}
-	return true;
 }
 
 </script>
