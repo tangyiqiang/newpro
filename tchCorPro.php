@@ -56,7 +56,6 @@ body{
 
 <script>
 document.getElementById("stuName").onchange = function(){
-	alert("areyoukiddingme?");
 	var request = new XMLHttpRequest();
 	request.open("GET","stuHomework.php?id="+document.getElementById("stuName").value);
 	request.send();

@@ -25,11 +25,6 @@ body{
 	<caption>学生信息表</caption> 
 	<th>学号</th><th>姓名</th>
 	<?php
-		class idPair{
-			public $id1;
-			public $id2;
-		}
-		*
 		function calcSimi($str1,$str2){
 			$len1 = strlen($str1);
 			$len2 = strlen($str2);

@@ -11,17 +11,15 @@ mysql_select_db($mysql_database);
 $title=$_POST['title'];
 $content=$_POST['content'];
 $curTime=date("Y-m-d");
+$week = $_SESSION['weeks'];
 date_default_timezone_set("PRC");
 if ($title && $content){
-	if( $_SESSION['weeks'] == 'one' ){
-		$sql = "INSERT INTO problem values(1,'$title','$content','$curTime')";
-		$res = mysql_query($sql);
-		if($res)
-			header("refresh:0;url=problem.php");
-		else
-			header("refresh:0;url=pubPro.php");
-	}
-	exit;
+	$sql = "INSERT INTO problem values('$week','$title','$content','$curTime')";
+	$res = mysql_query($sql);
+	if($res)
+		header("refresh:0;url=problem.php");
+	else
+		header("refresh:0;url=pubPro.php");
 }else {
  echo "<script language=javascript>alert('内容和标题不能为空');history.back();</script>";
 }
