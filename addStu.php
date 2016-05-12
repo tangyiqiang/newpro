@@ -12,7 +12,7 @@ $id=$_POST['id'];
 $name=$_POST['name'];
 $password=$id;
 date_default_timezone_set("PRC");
-$sql = "INSERT INTO personinfo values('$id','$name',0,'$password')";
+$sql = "INSERT INTO personinfo values('$id','$name',0,'$password',0)";
 $res = mysql_query($sql);
 mysql_close(); 
 if($res){

@@ -12,8 +12,20 @@
 <body>
 
 <style>
-body{
-	text-align: center;
+body {
+	text-align:center;
+	background:url("pic/bk.jpg") no-repeat;
+	background-size:cover;
+}
+#middle{
+	position:relative;
+	left:600px;
+	width:700px;
+	height:800px;
+	border:1px
+	solid black;
+	float:center;
+	display:block;
 }
 </style>
 
@@ -38,8 +50,8 @@ body{
 	$res = mysql_query($sql);
 	$row = mysql_fetch_assoc($res); 
 ?>
-	<div>题目：<input type=text value=<?php echo $row['title']?> /></div>
-	<div>内容：<input type=textarea value=<?php echo $row['content']?> /></div>
+	<div>题目：<text> <?php echo $row['title']?></text></div>
+	<div>内容：<textarea id='middle'> <?php echo $row['content']?></textarea></div>
 
 </body>
 

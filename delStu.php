@@ -21,6 +21,8 @@ foreach($id as $ide){
 	    echo "学生信息已经删除";
 	    header("refresh:0;url=tchDelStu.php");
 	}
+	$exec="DELETE FROM homework WHERE id='$ide'";
+	mysql_query($exec);
 }
 mysql_close();
 ?>

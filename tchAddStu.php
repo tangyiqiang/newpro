@@ -9,8 +9,18 @@
 </head>
 
 <style>
-body{
+body {
 	text-align:center;
+	background:url("pic/bk.jpg") no-repeat;
+	background-size:cover;
+}
+form{
+	position: relative;
+	top:300px;
+}
+button{
+	position: relative;
+	top:350px;
 }
 </style>
 <body>
@@ -26,18 +36,18 @@ body{
 <div><p>姓名:<input type=text name="name" id='name'></p></div>
 <input type="button" value="添加" onclick="Add()" />
 </form>
-<input type="button" value="返回上一页" onclick="Return()" />
+<button onclick="history.go(-1)">返回上一页</button>
 <script>
-function Return(){
-	header("refresh:0;url=tchMng.php");
-}
 function ok(id,name){
-	var n = Number(id);
-	if( !isNaN(n) ){
-		if( n > 0) return true;
-		else return false;
+	len = id.length;
+	for(var i = 0; i < len; i++){
+		var c = id.charAt(i);
+		if( c >= '0' && c <= '9') continue;
+		if( c >= 'a' && c <= 'z') continue;
+		if( c >= 'A' && c <= 'Z') continue;
+		return false;
 	}
-	return false;
+	return true;
 }
 function Add(){
 	var id=document.getElementById('id').value;
@@ -48,6 +58,7 @@ function Add(){
 		document.getElementById('name').value="";
 	}
 	else{
+		alert("用户合法！");
 		var form=document.getElementById("adds");
 		form.action="addStu.php";
 		form.submit();

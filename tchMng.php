@@ -9,8 +9,14 @@
 </head>
 
 <style>
-body{
+body {
 	text-align:center;
+	background:url("pic/bk.jpg") no-repeat;
+	background-size:cover;
+}
+form {
+	position: relative;
+	top:300px;
 }
 </style>
 <body>
@@ -21,6 +27,7 @@ body{
 	echo "欢迎你：".$_SESSION['username'];
 ?>
 <form id="tchOpform" name="tchForm" action="" method="post">
+<p>请选择要执行的操作:</p>
 <div><input type="button" value="添加学生" onclick="addStu()" /></div>
 <div><input type="button" value="删除学生" onclick="delStu()" /></div>
 </form>

@@ -3,19 +3,62 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>作业提交系统</title>
+<center><h1>欢迎使用作业提交系统</h1></center>
 </head>
 <style>
 form {
 	position: relative;
-	left:40%;
 	top:300px;
+}
+body {
+	text-align:center;
+	background:url("pic/bk.jpg") no-repeat;
+	background-size:cover;
 }
 </style>
 <body>
-<form action="login.php" method="post">
-<div><p>用户名:<input type=text name="id"></p></div>
-<div><p>密&nbsp码:<input type=password name="password"></p></div>
-<input name="log" type=submit value="登录">
+<form method="post" id='myform'>
+<div><p>用户名:<input type=text name="id" id='name'></p></div>
+<div><p>密&nbsp码:<input type=password name="password" id='passwd'></p></div>
+<button onclick="filter()">登录</button>
 </form>
+<div>
+<p style="position:relative; top:300px; font-size:10px">学生初始密码为学号</p>
+</div>
+<script>
+function ok(id,passwd){
+	var len = passwd.length;
+	for(var i = 0; i < len; i++){
+		var c = passwd.charAt(i);
+		if( c >= '0' && c <= '9') continue;
+		if( c >= 'a' && c <= 'z') continue;
+		if( c >= 'A' && c <= 'Z') continue;
+		return false;
+	}
+	len = id.length;
+	for(var i = 0; i < len; i++){
+		var c = id.charAt(i);
+		if( c >= '0' && c <= '9') continue;
+		if( c >= 'a' && c <= 'z') continue;
+		if( c >= 'A' && c <= 'Z') continue;
+		return false;
+	}
+	return true;
+}
+function filter(){
+	var form=document.getElementById("myform");
+	var id = document.getElementById('name').value;
+	var passwd = document.getElementById('passwd').value;
+	if( ok(id,passwd) ){
+		form.action = 'login.php';
+		form.submit();
+	}
+	else{
+		alert('用户名或密码不合法！');
+		document.getElementById('id').value="";
+		document.getElementById('passwd').value="";
+	}
+}
+</script>
 </body>
 </html>

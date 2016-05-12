@@ -9,8 +9,10 @@
 </head>
 
 <style>
-body{
+body {
 	text-align:center;
+	background:url("pic/bk.jpg") no-repeat;
+	background-size:cover;
 }
 </style>
 <body>
@@ -23,7 +25,7 @@ body{
 <form id="del" action="" method=post> 
 	<table border=1 width=60% align=center> 
 	<caption>学生信息表</caption> 
-	<th>学号</th><th>姓名</th>
+	<th></th><th>学号</th><th>姓名</th>
 	<?php 
 		$mysql_servername = "localhost"; //主机地址
 		$mysql_username = "root"; //数据库用户名
@@ -40,10 +42,8 @@ body{
 			$name=$rs->name; 
 	?> 
 		<tr>
-			<td><input type=checkbox name=de[] value=<?php echo $id?> /></td> 学号：<?php echo $id?>
-			&nbsp&nbsp&nbsp姓名：<td><?php echo $name?> </td>
-			<br />
-		</tr>
+			<th><input type=checkbox name=de[] value=<?php echo $id?> /></th><th><?php echo $id?></th><th><?php echo $name?> </th>
+		</tr>	
 	<?php
 		}
 		mysql_close(); 
@@ -51,6 +51,7 @@ body{
 	</table> 
 	<center><input type=button value="删除" onclick="Check()"></center> 
 </form> 
+<button onclick="history.go(-1)">返回上一页</button>
 <script>
 function Check(){
 	var chks=document.getElementsByTagName('input');

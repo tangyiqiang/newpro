@@ -9,13 +9,19 @@ mysql_connect($mysql_servername , $mysql_username , $mysql_password);
 mysql_query('set names utf8');
 mysql_select_db($mysql_database); 
 $id=$_GET['id'];
-$week=$_SESSION['weeks'];
 date_default_timezone_set("PRC");
-$sql = "SELECT * FROM homework WHERE id='$id' AND week='$week'";
-$res = mysql_query($sql);
-$row = mysql_fetch_assoc($res);
-if( $row )
-	echo $row['code'];
-else
-	echo "本周的作业你还没有提交！";
+$return = "";
+
+for($i = 1; $i <= 16; $i++){
+	$week = "".$i;
+	$sql = "SELECT * FROM homework WHERE id='$id' AND week='$week'";
+	$res = mysql_query($sql);
+	$tmp = mysql_fetch_array($res);
+	if( $tmp )
+		$return .= '1';
+	else
+		$return .= '0';
+}
+echo $return;
+mysql_close();
 ?>

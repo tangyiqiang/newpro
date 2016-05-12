@@ -14,10 +14,12 @@ $curTime=date("Y-m-d");
 $week = $_SESSION['weeks'];
 date_default_timezone_set("PRC");
 if ($title && $content){
+	$sqldel = "DELETE FROM problem where week='$week'";
+	mysql_query($sqldel);
 	$sql = "INSERT INTO problem values('$week','$title','$content','$curTime')";
 	$res = mysql_query($sql);
 	if($res)
-		header("refresh:0;url=problem.php");
+		header("refresh:0;url=tch_success.php");
 	else
 		header("refresh:0;url=pubPro.php");
 }else {

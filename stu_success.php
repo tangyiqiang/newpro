@@ -12,8 +12,12 @@
 <style>
 form{
 	position: relative;
-	left:40%;
 	top:300px;
+}
+body {
+	text-align:center;
+	background:url("pic/bk.jpg") no-repeat;
+	background-size:cover;
 }
 </style>
 

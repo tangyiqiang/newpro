@@ -9,8 +9,10 @@
 </head>
 
 <style>
-body{
+body {
 	text-align:center;
+	background:url("pic/bk.jpg") no-repeat;
+	background-size:cover;
 }
 </style>
 <body>

@@ -9,8 +9,14 @@
 </head>
 
 <style>
-body{
+body {
 	text-align:center;
+	background:url("pic/bk.jpg") no-repeat;
+	background-size:cover;
+}
+form{
+	position: relative;
+	top:300px;
 }
 </style>
 <body>
@@ -44,6 +50,7 @@ body{
 <div><input type="button" value="查看题目" onclick="broPro()" /></div>
 <div><input type="button" value="查看作业" onclick="corPro()" /></div>
 <div><input type="button" value="作业查重" onclick="chkJob()" /></div>
+<div><input type="button" value="检查学生" onclick="chkStu()" /></div>
 <div><input type="button" value="学生管理" onclick="stuMng()" /></div>
 </form>
 
@@ -66,6 +73,11 @@ function corPro(){
 function chkJob(){
 	var form=document.getElementById("tchOpform");
 	form.action="tchChkJob.php";
+	form.submit();
+}
+function chkStu(){
+	var form=document.getElementById("tchOpform");
+	form.action="chkStu.php";
 	form.submit();
 }
 function stuMng(){

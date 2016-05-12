@@ -9,13 +9,17 @@
 </head>
 
 <style>
-body{
+body {
 	text-align:center;
+	background:url("pic/bk.jpg") no-repeat;
+	background-size:cover;
 }
 #middle{
-	width:100%;
-	height:600px;
-	border:1px 
+	position:relative;
+	left:600px;
+	width:700px;
+	height:800px;
+	border:1px
 	solid black;
 	float:center;
 	display:block;
@@ -33,7 +37,7 @@ body{
 ?>
 <center><p>当前正在查看作业</p></center>
 <div>
-<form action="stuSubHomework.php" method="post">
+<form action="subHomework.php" method="post">
 <textarea id="middle" name="homework"></textarea>
 <input type="submit" value="提交" />
 </form>

@@ -14,6 +14,8 @@ $id=$_SESSION['id'];
 $week=$_SESSION['weeks'];
 date_default_timezone_set("PRC");
 if ($homework){
+	$sqldel = "DELETE FROM homework WHERE id='$id' and week='$week'";
+	mysql_query($sqldel);
 	$sql = "INSERT INTO homework values('$id','$homework','$curTime','$week')";
 	$res = mysql_query($sql);
 	if($res)
